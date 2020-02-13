@@ -1,0 +1,78 @@
+.m-padded-mini{
+    padding: 0.2em !important;
+}
+.m-padded-tiny{
+    padding: 0.3em !important;
+}
+
+.m-padded-tb-mini {
+    padding-top: 0.2em !important;
+    padding-bottom: 0.2em !important;
+}
+
+.m-padded-td-tiny {
+    padding-top: 0.3em !important;
+    padding-bottom: 0.3em !important;
+}
+
+.m-padded-td-small {
+    padding-top: 0.5em !important;
+    padding-bottom: 0.5em !important;
+}
+
+.m-padded-td {
+    padding-top: 1em !important;
+    padding-bottom: 1em !important;
+}
+
+.m-padded-td-large {
+    padding-top: 2em !important;
+    padding-bottom: 2em !important;
+}
+
+.m-padded-td-big {
+    padding-top: 3em !important;
+    padding-bottom: 3em !important;
+}
+
+.m-padded-td-huge {
+    padding-top: 4em !important;
+    padding-bottom: 4em !important;
+}
+
+.m-padded-td-massive {
+    padding-top: 5em !important;
+    padding-bottom: 5em !important;
+}
+
+/*------text------*/
+.m-text{
+    letter-spacing: 1px !important;
+    line-height: 1.8;
+}
+
+.m-text-thin {
+    font-weight: 500 !important;
+}
+
+.m-text-spaced {
+    letter-spacing: 1px !important;
+}
+
+.m-text-lined {
+    line-height: 1.8;
+}
+
+.m-opacity-mini {
+    opacity: 0.8 !important;
+}
+
+/*-------display-------*/
+.m-inline-block {
+    display: inline-block !important;
+}
+
+.m-container{
+    max-width: 72em !important;
+    margin: auto !important;
+}
