@@ -67,6 +67,12 @@
     opacity: 0.8 !important;
 }
 
+/*-----margin-----*/
+.m-margin-tb-tiny{
+    margin-top: 0.3em !important;
+    margin-bottom: 0.3em; !important;
+}
+
 /*-------display-------*/
 .m-inline-block {
     display: inline-block !important;

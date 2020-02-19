@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5020a3a-ce91-4b62-b9e7-5820fdbb4297" name="Default Changelist" comment="" />
+    <list default="true" id="a5020a3a-ce91-4b62-b9e7-5820fdbb4297" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/my.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/my.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +20,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1XTNMQMfCTq1ojL6c0279Y7E46o" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -24,8 +33,9 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -52,6 +62,7 @@
       <updated>1581066075409</updated>
       <workItem from="1581066078166" duration="8741000" />
       <workItem from="1581329500361" duration="6642000" />
+      <workItem from="1582132194625" duration="1968000" />
     </task>
     <servers />
   </component>
@@ -59,11 +70,19 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="217" y="79" width="1069" height="722" key="SettingsEditor" timestamp="1581409430585">
+    <state x="313" y="52" key="CommitChangelistDialog2" timestamp="1582134336173">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="217" y="79" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1581409430585" />
+    <state x="313" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1582134336173" />
+    <state x="217" y="79" width="1069" height="722" key="SettingsEditor" timestamp="1582133716504">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="217" y="79" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1582133716503" />
     <state x="212" y="100" width="1069" height="722" key="SettingsEditor/0.23.1406.877@0.23.1406.877" timestamp="1581302417082" />
+    <state x="386" y="85" width="667" height="729" key="find.popup" timestamp="1582132639365">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="386" y="85" width="667" height="729" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1582132639365" />
     <state x="368" y="211" key="run.anything.popup" timestamp="1581303860439">
       <screen x="0" y="23" width="1406" height="877" />
     </state>
