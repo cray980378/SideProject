@@ -49,6 +49,11 @@ body{
     padding-bottom: 5em !important;
 }
 
+.m-padded-lr{
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+}
+
 /*------text------*/
 .m-text{
     letter-spacing: 1px !important;
@@ -94,7 +99,6 @@ body{
     opacity: 0.6 !important;
 }
 
-
 /*-----position-----*/
 .m-top-right{
     position: absolute;
@@ -110,6 +114,11 @@ body{
 /*----- container -----*/
 .m-container{
     max-width: 72em !important;
+    margin: auto !important;
+}
+
+.m-container-small{
+    max-width: 60em !important;
     margin: auto !important;
 }
 
