@@ -10,7 +10,7 @@
 <body>
 
   <!-- menu -->
-  <nav class="ui inverted attached segment m-padded-tb-mini">
+  <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
         <h2 class="ui teal header item">Blog</h2>
@@ -62,7 +62,7 @@
         </div>
         <h2 class="ui center aligned header">看看這隻黑色的小狗狗</h2>
         <br>
-        <div id="content" class="m-padded-lr m-padded-td-large">
+        <div id="content" class="m-padded-lr-responsive m-padded-td-large">
           汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪!
           汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪汪~~汪汪汪汪汪汪!
           汪汪汪汪汪汪!汪汪汪汪汪汪!
@@ -73,19 +73,139 @@
         </div>
 
         <!-- 標籤 -->
-        <div class="m-padded-lr">
+        <div class="m-padded-lr-responsive">
           <div class="ui teal basic left label">方法論</div>
         </div>
         <!-- 給讚 -->
         <div class="ui center aligned basic segment">
-          <button class="ui orange basic circular button">給讚</button>
+          <button id="popupBtn" class="ui orange basic circular button">給讚</button>
         </div>
+
+        <div class="ui popupTest flowing popup transition hidden">
+          <div class="ui three column divided center aligned grid">
+            <div class="ui orange basic label">
+              <div class="ui images" style="font-size: inherit !important;">
+                <div class="image">
+                  <img src="./static/images/smallYellow.jpg" alt="" class="ui rounded bordered image"
+                       style="width: 150px">
+                  <div>小小兵</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
       <div class="ui attached positive message">
-        部落客訊息
+        <!-- 部落客訊息 -->
+        <div class="ui grid">
+          <div class="eleven wide column">
+            <ui class="list">
+              <li>作者：Eason</li>
+              <li>發表時間：2020-03-02 02:32</li>
+              <li>版權聲明：可自由轉載，需署名</li>
+            </ui>
+          </div>
+          <div class="five wide column">
+            <img src="./static/images/smallYellow.jpg" alt="" class="ui right floated rounded bordered image"
+                 style="width : 150px">
+          </div>
+        </div>
       </div>
       <div class="ui bottom attached segment">
-        留言區域
+        <!-- 留言區域 -->
+        <div class="ui teal segment">
+          <div class="ui threaded comments">
+            <h3 class="ui dividing header">Comments</h3>
+            <div class="comment">
+              <a class="avatar">
+                <img src="https://i.picsum.photos/id/237/100/100.jpg">
+              </a>
+              <div class="content">
+                <a class="author">Matt</a>
+                <div class="metadata">
+                  <span class="date">今天 5:42PM</span>
+                </div>
+                <div class="text">初音只是個軟體而已!!</div>
+                <div class="actions">
+                  <a class="reply">回覆</a>
+                </div>
+              </div>
+            </div>
+            <div class="comment">
+              <a class="avatar">
+                <img src="https://i.picsum.photos/id/237/100/100.jpg">
+              </a>
+              <div class="content">
+                <a class="author">蔡依婷</a>
+                <div class="metadata">
+                  <span class="date">昨天 12:30AM</span>
+                </div>
+                <div class="text">
+                  <p>什麼叫初音是個軟體而已... 想決鬥嗎?</p>
+                </div>
+                <div class="actions">
+                  <a class="reply">回覆</a>
+                </div>
+              </div>
+              <div class="comments">
+                <div class="comment">
+                  <a class="avatar">
+                    <img src="https://i.picsum.photos/id/237/100/100.jpg">
+                  </a>
+                  <div class="content">
+                    <a class="author">黃傳欣</a>
+                    <div class="metadata">
+                      <span class="date">剛剛</span>
+                    </div>
+                    <div class="text">好啦，應該說她 "本來" 是個軟體 :)</div>
+                    <div class="actions">
+                      <a class="reply">回覆</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="comment">
+              <a class="avatar">
+                <img src="https://i.picsum.photos/id/237/100/100.jpg">
+              </a>
+              <div class="content">
+                <a class="author">何金銀</a>
+                <div class="metadata">
+                  <span class="date">5 天前</span>
+                </div>
+                <div class="text">什麼叫做 "本來" 是個軟體! 你想要決鬥了嗎?</div>
+                <div class="actions">
+                  <a class="reply">回覆</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="ui reply form">
+          <div class="field">
+            <textarea name="content" placeholder="請輸入留言..."></textarea>
+          </div>
+          <div class="fields">
+            <div class="field m-mobile-wide m-margin-bottom-small">
+              <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input type="text" name="nickname" placeholder="姓名">
+              </div>
+            </div>
+            <div class="field m-mobile-wide m-margin-bottom-small">
+              <div class="ui left icon input">
+                <i class="mail icon"></i>
+                <input type="text" name="nickname" placeholder="E-Mail">
+              </div>
+            </div>
+            <div class="field m-mobile-wide m-margin-bottom-small">
+              <button class="ui teal button m-mobile-wide"><i class="edit icon"></i>送出</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -135,9 +255,15 @@
   <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
   <script>
-    $('.menu.toggle').click(function(){
-      $('.m-item').toggleClass('m-mobile-hide');
-    });
+      $('.menu.toggle').click(function () {
+          $('.m-item').toggleClass('m-mobile-hide');
+      });
+
+      $('#popupBtn').popup({
+          popup: $('.popupTest.popup'),
+          on: 'click',
+          position: 'bottom center'
+      })
   </script>
 
 </body>
