@@ -6,6 +6,8 @@
   <title>文章內容</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
   <link rel="stylesheet" href="./static/css/typo.css">
+  <link rel="stylesheet" href="./static/lib/prism/prism.css">
+  <link rel="stylesheet" href="./static/css/animate.css">
   <link rel="stylesheet" href="./static/css/my.css">
 </head>
 <body>
@@ -34,7 +36,7 @@
   </nav>
 
   <!--  內容  -->
-  <div class="m-container m-container-small m-padded-td-large">
+  <div class="m-container m-container-small m-padded-td-large animated fadeIn">
     <div class="ui container">
       <div class="ui top attached segment">
         <div class="ui horizontal link list">
@@ -65,7 +67,6 @@
         <br>
         <div id="content" class="typo typo-selection m-padded-lr-responsive m-padded-td-large">
           <h2 id="section1">一、关于 <i class="serif">Typo.css</i></h2>
-
           <p><i class="serif">Typo.css</i> 的目的是，在一致化浏览器排版效果的同时，构建最适合中文阅读的网页排版。</p>
           <h4>现状和如何去做：</h4>
           
@@ -248,21 +249,25 @@
             You just need to follow the browser's behavior, and set a right <code>margin</code> to it。it will works nice as the
             demo you're watching now. The following code is the best way to render typo in Chinese:
           </p>
-          <pre>
-          /* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
-          h1,h2,h3,h4,h5,h6 {
-              line-height:1;font-family:Arial,sans-serif;margin:1.4em 0 0.8em;
-          }
-          h1{font-size:1.8em;}
-          h2{font-size:1.6em;}
-          h3{font-size:1.4em;}
-          h4{font-size:1.2em;}
-          h5,h6{font-size:1em;}
           
-          /* 现代排版：保证块/段落之间的空白隔行 */
-          .typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr {
-              margin:1em 0 0.6em;
-          }
+          <pre>
+            <code class="language-css">
+  /* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
+  h1,h2,h3,h4,h5,h6 {
+    line-height:1;font-family:Arial,sans-serif;margin:1.4em 0 0.8em;
+  }
+
+  h1{font-size:1.8em;}
+  h2{font-size:1.6em;}
+  h3{font-size:1.4em;}
+  h4{font-size:1.2em;}
+  h5,h6{font-size:1em;}
+
+  /* 现代排版：保证块/段落之间的空白隔行 */
+  .typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr {
+    margin:1em 0 0.6em;
+  }
+            </code>
           </pre>
           
           <h3 id="section3">三、附录</h3>
@@ -451,7 +456,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js"
           integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-
+  <script src="./static/lib/prism/prism.js"></script>
   <script>
       $('.menu.toggle').click(function () {
           $('.m-item').toggleClass('m-mobile-hide');
