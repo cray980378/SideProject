@@ -318,7 +318,7 @@
       </div>
       <div class="ui bottom attached segment">
         <!-- 留言區域 -->
-        <div class="ui teal segment">
+        <div id="comment-container" class="ui teal segment">
           <div class="ui threaded comments">
             <h3 class="ui dividing header">Comments</h3>
             <div class="comment">
@@ -413,6 +413,18 @@
     </div>
   </div>
 
+  <div class="m-padded m-fixed m-right-bottom">
+    <div class="ui vertical icon buttons">
+      <button type="button" class="ui toc teal button">目錄</button>
+      <a href="#comment-container" class="ui teal button">留言</a>
+      <a href="#" class="ui teal button"><i class="chevron up icon"></i></a>
+    </div>
+  </div>
+
+  <div class="ui toc-container flowing popup transition hidden">
+    test
+  </div>
+
   <br>
   <br>
 
@@ -450,7 +462,6 @@
       <div class="ui inverted section divider"></div>
       <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2020 Eason. All Rights Reserved. </p>
     </div>
-
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -467,7 +478,15 @@
           on: 'click',
           position: 'bottom center'
       })
+
+      $('.toc.button').popup({
+          popup: $('.toc-container.popup'),
+          on: 'click',
+          position: 'left center'
+      })
   </script>
+
+toc-container
 
 </body>
 </html>
