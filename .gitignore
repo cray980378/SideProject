@@ -1,2 +1,15 @@
-.idea
 **/.DS_Store
+**/.classpath
+**/.project
+**/.gradle
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommender
