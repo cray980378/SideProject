@@ -15,7 +15,7 @@ import java.lang.reflect.AnnotatedType;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler(Exception.class)
     public ModelAndView exceptionHandler(HttpServletRequest request, Exception e) throws Exception {

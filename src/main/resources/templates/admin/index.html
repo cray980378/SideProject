@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>後台管理</title>
@@ -10,7 +10,7 @@
 <body>
 
   <!-- menu -->
-  <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+  <nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
         <h2 class="ui teal header item">後台管理</h2>
@@ -25,7 +25,7 @@
             </div>
             <i class="dropdown icon"></i>
             <div class="menu">
-              <a href="" class="item">登出</a>
+              <a href="#" class="item">登出</a>
             </div>
           </div>
         </div>
@@ -35,91 +35,25 @@
       <i class="sidebar icon"></i>
     </a>
   </nav>
-  <div class="ui attached pointing menu">
-    <div class="ui container">
-      <div class="right menu">
-        <a href="#" class="item">發佈</a>
-        <a href="#" class="teal active item">列表</a>
-      </div>
-    </div>
-  </div>
 
 
   <!--  內容  -->
-  <div class="m-container m-container-small m-padded-td-large">
+  <div class="m-container-small m-padded-td-big">
     <div class="ui container">
-      <form action="#" method="post" class="ui segment form">
-        <div class="inline fields">
-          <div class="field">
-            <input type="text" name="title" placeholder="title">
-          </div>
-          <div class="field">
-            <div class="ui selection dropdown">
-              <input type="hidden" name="type">
-              <i class="dropdown icon"></i>
-              <div class="default text">分類</div>
-              <div class="menu">
-                <div class="item" data-value="1">錯誤日誌</div>
-                <div class="item" data-value="2">開發者手冊</div>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" id="recommend" name="recommend">
-              <label for="recommend">推薦</label>
-            </div>
-          </div>
-          <div class="field">
-            <button class="ui teal basic button"><i class="search icon"></i>搜尋</button>
-          </div>
-        </div>
-      </form>
-
-      <table class="ui table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>標題</th>
-            <th>類型</th>
-            <th>推薦</th>
-            <th>更新時間</th>
-            <th></th>
-          </tr>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>刻意練習清單</td>
-            <td>觀念</td>
-            <td>是</td>
-            <td>2020-04-01 20:45</td>
-            <td>
-              <a href="#" class="ui mini teal button">編輯</a>
-              <a href="#" class="ui mini red button">刪除</a>
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th colspan="6">
-              <div class="ui mini pagination menu">
-                <a href="#" class="item">上一頁</a>
-                <a href="#" class="item">下一頁</a>
-              </div>
-              <a href="" class="ui mini right floated teal basic button">新增</a>
-            </th>
-          </tr>
-        </tfoot>
-        </thead>
-      </table>
-    </div>
+     	<div class="ui success large message">
+     		<p>Hi</p>
+     		<p>Eason, 歡迎登入！</p>
+     	</div>	
+     	
+     	<img src="https://picsum.photos/id/237/1000/400.jpg" alt="" class="ui rounded bordered fluid image">
+     </div>
   </div>
 
   <br>
   <br>
 
   <!--  底部  -->
-  <footer class="ui inverted vertical segment m-padded-td-massive">
+  <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-td-massive">
     <div class="ui center aligned container">
       <!--  grid會將寬度切成16格  -->
       <div class="ui inverted divided stackable grid">
@@ -155,9 +89,11 @@
 
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.js"
-          integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--/*/</th:block>/*/-->
 
   <script>
       $('.menu.toggle').click(function () {
