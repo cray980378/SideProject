@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.google.gson.Gson;
 
@@ -18,6 +19,8 @@ public class Tag {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@NotBlank(message = "標籤名稱不能為空")
 	private String name;
 
 	@ManyToMany(mappedBy = "tags")
