@@ -3,14 +3,15 @@
 <head th:replace="admin/_fragments :: head(~{::title})">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>後台管理</title>
+  <title>新增分類</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
   <link rel="stylesheet" href="../../static/css/my.css">
 </head>
 <body>
 
   <!-- menu -->
-  <nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+  <nav th:replace="admin/_fragments :: menu(2)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
         <h2 class="ui teal header item">後台管理</h2>
@@ -38,8 +39,8 @@
   <div class="ui attached pointing menu">
     <div class="ui container">
       <div class="right menu">
-        <a href="#" class="item">發佈</a>
-        <a href="#" class="teal active item">列表</a>
+        <a href="#" th:href="@{/admin/types/input}" class="teal active item">新增</a>
+        <a href="#" th:href="@{/admin/types}" class="item">列表</a>
       </div>
     </div>
   </div>
@@ -48,74 +49,40 @@
   <!--  內容  -->
   <div class="m-container m-container-small m-padded-td-large">
     <div class="ui container">
-      <form action="#" method="post" class="ui segment form">
-        <div class="inline fields">
-          <div class="field">
-            <input type="text" name="title" placeholder="標題">
-          </div>
-          <div class="field">
-            <div class="ui selection dropdown">
-              <input type="hidden" name="type">
-              <i class="dropdown icon"></i>
-              <div class="default text">分類</div>
-              <div class="menu">
-                <div class="item" data-value="1">錯誤日誌</div>
-                <div class="item" data-value="2">開發者手冊</div>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" id="recommend" name="recommend">
-              <label for="recommend">推薦</label>
-            </div>
-          </div>
-          <div class="field">
-            <button class="ui teal basic button"><i class="search icon"></i>搜尋</button>
+      <form action="#" method="post" th:object="${type}" th:action="*{id}==null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})} " class="ui form">
+		<input type="hidden" name="id" th:value="*{id}">
+        <div class=" field">
+          <div class="ui left labeled input">
+            <label class="ui teal basic label">名稱</label>
+            <input type="text" name="name" placeholder="分類名稱" th:value="*{name}">
           </div>
         </div>
-      </form>
 
-      <table class="ui table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>標題</th>
-            <th>類型</th>
-            <th>推薦</th>
-            <th>更新時間</th>
-            <th></th>
-          </tr>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>刻意練習清單</td>
-            <td>觀念</td>
-            <td>是</td>
-            <td>2020-04-01 20:45</td>
-            <td>
-              <a href="#" class="ui mini teal button">編輯</a>
-              <a href="#" class="ui mini red button">刪除</a>
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th colspan="6">
-              <div class="ui mini pagination menu">
-                <a href="#" class="item">上一頁</a>
-                <a href="#" class="item">下一頁</a>
-              </div>
-              <a href="" class="ui mini right floated teal basic button">新增</a>
-            </th>
-          </tr>
-        </tfoot>
-        </thead>
-      </table>
+        <div class="ui error message"></div>
+        
+        <!--/*/
+        	<div class="ui negative message" th:if="${#fields.hasErrors('name')}">
+        		<i class="close icon"></i>
+        		<div class="header">驗證失敗</div>
+        		<p th:errors="*{name}">送出訊息不符合規定</p>
+        	</div>
+        /*/-->
+
+        <div class="ui right aligned container">
+          <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+          <button class="ui teal submit button">送出</button>
+        </div>
+      </form>
     </div>
   </div>
 
   <br>
+  <br>
+   <br>
+  <br>
+   <br>
+  <br>
+   <br>
   <br>
 
   <!--  底部  -->
@@ -162,13 +129,27 @@
 <!--/*/</th:block>/*/-->
 
   <script>
+
+
       $('.menu.toggle').click(function () {
           $('.m-item').toggleClass('m-mobile-hide');
       });
 
       $('.ui.dropdown')
-        .dropdown()
+          .dropdown()
       ;
+
+      $('.ui.form').form({
+          fields: {
+              title: {
+                  identifier: 'name',
+                  rules: [{
+                      type: 'empty',
+                      prompt: '請輸入分類名稱'
+                  }]
+              }
+          }
+      })
   </script>
 
 </body>
