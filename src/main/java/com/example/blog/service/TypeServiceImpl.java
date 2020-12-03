@@ -1,5 +1,7 @@
 package com.example.blog.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.BeanUtils;
@@ -41,6 +43,11 @@ public class TypeServiceImpl implements TypeService {
 	public Page<Type> listType(Pageable pageable) {
 		return typeRepository.findAll(pageable);
 	}
+	
+	@Override
+	public List<Type> listType() {
+		return typeRepository.findAll();
+	}
 
 	@Transactional
 	@Override
@@ -56,5 +63,4 @@ public class TypeServiceImpl implements TypeService {
 		typeRepository.deleteById(id);
 
 	}
-
 }

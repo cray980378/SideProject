@@ -10,7 +10,7 @@
 <body>
 
   <!-- menu -->
-  <nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+  <nav th:replace="admin/_fragments :: menu(0)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
         <h2 class="ui teal header item">後台管理</h2>
@@ -42,7 +42,7 @@
     <div class="ui container">
      	<div class="ui success large message">
      		<p>Hi</p>
-     		<p>Eason, 歡迎登入！</p>
+     		<span th:text="${session.user.nickname}+', 歡迎登入！'" >nickname</span>
      	</div>	
      	
      	<img src="https://picsum.photos/id/237/1000/400.jpg" alt="" class="ui rounded bordered fluid image">
@@ -89,7 +89,7 @@
 
   </footer>
 
-<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+<!--/*/<th:block th:replace="admin/_fragments :: script">/*/-->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>

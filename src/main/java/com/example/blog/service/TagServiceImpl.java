@@ -1,5 +1,8 @@
 package com.example.blog.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.BeanUtils;
@@ -29,7 +32,7 @@ public class TagServiceImpl implements TagService {
 	public Tag getTag(Long id) {
 		return tagRepository.findById(id).orElse(null);
 	}
-	
+
 	@Override
 	public Tag getTagByName(String name) {
 		return tagRepository.findByName(name);
@@ -40,6 +43,27 @@ public class TagServiceImpl implements TagService {
 	// Page => 分頁查詢
 	public Page<Tag> listTag(Pageable pageable) {
 		return tagRepository.findAll(pageable);
+	}
+
+	@Override
+	public List<Tag> listTag() {
+		return tagRepository.findAll();
+	}
+
+	@Override
+	public List<Tag> listTag(String ids) {
+		return tagRepository.findAllById(idsConverToLongList(ids));
+	}
+
+	private List<Long> idsConverToLongList(String ids) {
+		List<Long> list = new ArrayList<>();
+		if (ids != null && !ids.trim().equals("")) {
+			String[] idArray = ids.split(",");
+			for (String id : idArray) {
+				list.add(Long.valueOf(id));
+			}
+		}
+		return list;
 	}
 
 	@Transactional
@@ -56,5 +80,4 @@ public class TagServiceImpl implements TagService {
 		tagRepository.deleteById(id);
 
 	}
-
 }
