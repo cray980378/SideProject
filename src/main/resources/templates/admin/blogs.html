@@ -100,7 +100,7 @@
 	            <td th:text="${blog.title}">刻意練習清單</td>
 	            <td th:text="${blog.type.name}">觀念</td>
 	            <td th:text="${blog.recommend} ? '是':'否'">是</td>
-	            <td th:text="${blog.published} ? ' 草稿':'發佈'">草稿</td>
+	            <td th:text="${blog.published} ? '發佈':'草稿'">草稿</td>
 	            <td th:text="${blog.updateTime}">2020-04-01 20:45</td>
 	            <td>
 	              <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal button">編輯</a>

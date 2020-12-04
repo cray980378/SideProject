@@ -21,6 +21,7 @@ import com.example.blog.NotFoundException;
 import com.example.blog.dao.BlogRepository;
 import com.example.blog.po.Blog;
 import com.example.blog.po.Type;
+import com.example.blog.util.MyBeanUtils;
 import com.example.blog.vo.BlogQuery;
 
 @Service
@@ -63,9 +64,14 @@ public class BlogServiceImpl implements BlogService {
 	@Transactional
 	@Override
 	public Blog saveBlog(Blog blog) {
-		blog.setCreateTime(new Date());
-		blog.setUpdateTime(new Date());
-		blog.setViews(0);
+
+		if (blog.getId() == null) {
+			blog.setCreateTime(new Date());
+			blog.setUpdateTime(new Date());
+			blog.setViews(0);
+		} else {
+			blog.setUpdateTime(new Date());
+		}
 		return blogRepository.save(blog);
 	}
 
@@ -73,7 +79,8 @@ public class BlogServiceImpl implements BlogService {
 	@Override
 	public Blog updateBlog(Long id, Blog blog) {
 		Blog b = blogRepository.findById(id).orElseThrow(() -> new NotFoundException("此文章不存在"));
-		BeanUtils.copyProperties(blog, b);
+		BeanUtils.copyProperties(blog, b, MyBeanUtils.getNullPropertyNames(blog));
+		b.setUpdateTime(new Date());
 		return blogRepository.save(b);
 	}
 

@@ -29,11 +29,11 @@ public class Blog {
 	@GeneratedValue
 	private Long id;
 	private String title;
-	
+
 	@Basic(fetch = FetchType.LAZY)
 	@Lob
 	private String content;
-	private String firstPictuer;
+	private String firstPicture;
 	private String flag;
 	private Integer views;
 	private boolean shareStatement;
@@ -61,6 +61,32 @@ public class Blog {
 
 	@Transient
 	private String tagIds;
+	
+	private String description;
+
+	public void init() {
+		this.tagIds = tagsToIds(this.getTags());
+	}
+
+	private String tagsToIds(List<Tag> tags) {
+		if (!tags.isEmpty()) {
+			StringBuilder sb = new StringBuilder();
+
+			boolean flag = false;
+			for (Tag tag : tags) {
+
+				if (flag) {
+					sb.append(",");
+				} else {
+					flag = true;
+				}
+				sb.append("" + tag.getId());
+			}
+			return sb.toString();
+		} else {
+			return tagIds;
+		}
+	}
 
 	public Blog() {
 	}
@@ -89,12 +115,12 @@ public class Blog {
 		this.content = content;
 	}
 
-	public String getFirstPictuer() {
-		return firstPictuer;
+	public String getFirstPicture() {
+		return firstPicture;
 	}
 
-	public void setFirstPictuer(String firstPictuer) {
-		this.firstPictuer = firstPictuer;
+	public void setFirstPicture(String firstPicture) {
+		this.firstPicture = firstPicture;
 	}
 
 	public String getFlag() {
@@ -199,6 +225,14 @@ public class Blog {
 
 	public void setTagIds(String tagIds) {
 		this.tagIds = tagIds;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
