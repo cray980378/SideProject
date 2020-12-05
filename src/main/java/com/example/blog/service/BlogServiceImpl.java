@@ -23,6 +23,7 @@ import com.example.blog.NotFoundException;
 import com.example.blog.dao.BlogRepository;
 import com.example.blog.po.Blog;
 import com.example.blog.po.Type;
+import com.example.blog.util.MarkdownUtils;
 import com.example.blog.util.MyBeanUtils;
 import com.example.blog.vo.BlogQuery;
 
@@ -34,7 +35,7 @@ public class BlogServiceImpl implements BlogService {
 
 	@Override
 	public Blog getBlog(Long id) {
-		return blogRepository.findById(id).orElse(null);
+		return blogRepository.findById(id).orElseThrow(() -> new NotFoundException("此文章不存在"));
 	}
 
 	@Override
@@ -62,7 +63,7 @@ public class BlogServiceImpl implements BlogService {
 			}
 		}, pageable);
 	}
-	
+
 	@Override
 	public Page<Blog> listBlog(Pageable pageable) {
 		return blogRepository.findAll(pageable);
@@ -100,12 +101,21 @@ public class BlogServiceImpl implements BlogService {
 
 	@Override
 	public List<Blog> listRecommendBlogTop(Integer size) {
-		Pageable pageable = PageRequest.of(0, size,Sort.by(Sort.Direction.DESC, "updateTime")) ;
+		Pageable pageable = PageRequest.of(0, size, Sort.by(Sort.Direction.DESC, "updateTime"));
 		return blogRepository.findTop(pageable);
 	}
 
 	@Override
 	public Page<Blog> listBlog(String query, Pageable pageable) {
 		return blogRepository.findByQuery(query, pageable);
+	}
+
+	@Override
+	public Blog getAndConvert(Long id) {
+		Blog blog = blogRepository.findById(id).orElseThrow(() -> new NotFoundException("此文章不存在"));
+		Blog tempBlog = new Blog();
+		BeanUtils.copyProperties(blog, tempBlog);
+		tempBlog.setContent(MarkdownUtils.markdownToHtmlExtensions(blog.getContent()));
+		return tempBlog;
 	}
 }

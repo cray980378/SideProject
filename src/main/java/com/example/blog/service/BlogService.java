@@ -11,6 +11,8 @@ import com.example.blog.vo.BlogQuery;
 public interface BlogService {
 
 	Blog getBlog(Long id);
+	
+	Blog getAndConvert(Long id);
 
 	Page<Blog> listBlog(Pageable pageable, BlogQuery blogQuery);
 

@@ -26,6 +26,13 @@ ext['thymeleaf-layout-dialect.version'] = '2.1.1'
 
 dependencies {
 
+	//https://mvnrepository.com/artifact/com.atlassian.commonmark/commonmark
+	implementation group: 'com.atlassian.commonmark', name: 'commonmark', version: '0.15.2'
+	// https://mvnrepository.com/artifact/com.atlassian.commonmark/commonmark-ext-heading-anchor
+	implementation group: 'com.atlassian.commonmark', name: 'commonmark-ext-heading-anchor', version: '0.15.2'
+	// https://mvnrepository.com/artifact/com.atlassian.commonmark/commonmark-ext-gfm-tables
+	implementation group: 'com.atlassian.commonmark', name: 'commonmark-ext-gfm-tables', version: '0.15.2'
+	
 
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

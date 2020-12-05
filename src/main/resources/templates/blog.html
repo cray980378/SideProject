@@ -66,7 +66,7 @@
         </div>
         <h2 class="ui center aligned header" th:text="${blog.title}" >看看這隻黑色的小狗狗</h2>
         <br>
-        <div id="content" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large" th:text="${blog.content}">
+        <div id="content" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large" th:utext="${blog.content}">
         </div>
 
         <!-- 標籤 -->
@@ -191,6 +191,7 @@
     <div class="ui vertical icon buttons">
       <button type="button" class="ui toc teal button">目錄</button>
       <a href="#comment-container" class="ui teal button">留言</a>
+      <button class="ui qrcode teal button"><i class="qrcode big icon"></i></button>
       <div id="toTop-button" class="ui teal button"><i class="chevron up icon"></i></div>
     </div>
   </div>
@@ -198,6 +199,9 @@
   <div class="ui toc-container flowing popup transition hidden" style="width: 260px !important;">
     <ol class="js-toc">
     </ol>
+  </div>
+  
+  <div id="qrcode" class="ui blog-qr flowing popup transition hidden "style="width: 130px !important;">
   </div>
 
   <br>
@@ -247,11 +251,12 @@
   <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
   <script src="../static/lib/prism/prism.js"></script>
   <script src="../static/lib/tocbot/tocbot.min.js"></script>
+  <script src="../static/lib/qrcode/qrcode.min.js"></script>
   <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
 
   <!--/*/</th:block>/*/-->
 
-  <script>
+  <script th:inline="javascript">
       tocbot.init({
           // Where to render the table of contents.
           tocSelector: '.js-toc',
@@ -281,8 +286,24 @@
 
       $('#toTop-button').click(function () {
           $(window).scrollTo(0, 500);
-      })
-
+      });
+      
+      $('.qrcode').popup({
+        popup : $('.blog-qr'),
+        position: 'left center'
+      });
+      
+      var serurl = "127.0.0.1:8080";
+      var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";
+      var qrcode = new QRCode("qrcode", {
+        text: serurl+url,
+        width: 110,
+        height: 110,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+      
       var waypoint = new Waypoint({
           element: document.getElementById('waypoint'),
           handler: function (direction) {
@@ -293,7 +314,7 @@
               }
               console.log('Scrolled to waypoint!' + direction)
           }
-      })
+      });
   </script>
 
 </body>
