@@ -38,7 +38,7 @@ public class BlogController {
 
 	@GetMapping("/blogs")
 	public String blogs(
-			@PageableDefault(size = 2, sort = { "updateTime" }, direction = Sort.Direction.DESC) Pageable pageable,
+			@PageableDefault(size = 8, sort = { "updateTime" }, direction = Sort.Direction.DESC) Pageable pageable,
 			BlogQuery blogQuery, Model model) {
 		model.addAttribute("types", typeService.listType());
 		model.addAttribute("page", blogService.listBlog(pageable, blogQuery));

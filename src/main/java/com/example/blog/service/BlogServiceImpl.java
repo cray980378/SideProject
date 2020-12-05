@@ -13,7 +13,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +62,11 @@ public class BlogServiceImpl implements BlogService {
 			}
 		}, pageable);
 	}
+	
+	@Override
+	public Page<Blog> listBlog(Pageable pageable) {
+		return blogRepository.findAll(pageable);
+	}
 
 	@Transactional
 	@Override
@@ -91,4 +98,9 @@ public class BlogServiceImpl implements BlogService {
 
 	}
 
+	@Override
+	public List<Blog> listRecommendBlogTop(Integer size) {
+		Pageable pageable = PageRequest.of(0, size,Sort.by(Sort.Direction.DESC, "updateTime")) ;
+		return blogRepository.findTop(pageable);
+	}
 }

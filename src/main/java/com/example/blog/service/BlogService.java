@@ -1,5 +1,7 @@
 package com.example.blog.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,6 +14,10 @@ public interface BlogService {
 
 	Page<Blog> listBlog(Pageable pageable, BlogQuery blogQuery);
 
+	Page<Blog> listBlog(Pageable pageable);
+	
+	List<Blog> listRecommendBlogTop(Integer size);
+	
 	Blog saveBlog(Blog blog);
 
 	Blog updateBlog(Long id, Blog blog);

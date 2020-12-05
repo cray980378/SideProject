@@ -8,7 +8,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.blog.NotFoundException;
@@ -55,6 +57,12 @@ public class TagServiceImpl implements TagService {
 		return tagRepository.findAllById(idsConverToLongList(ids));
 	}
 
+	@Override
+	public List<Tag> listTagTop(Integer size) {
+		Pageable pageable = PageRequest.of(0, size, Sort.by(Sort.Direction.DESC, "blogs.size"));
+		return tagRepository.findTop(pageable);
+	}
+
 	private List<Long> idsConverToLongList(String ids) {
 		List<Long> list = new ArrayList<>();
 		if (ids != null && !ids.trim().equals("")) {
@@ -80,4 +88,5 @@ public class TagServiceImpl implements TagService {
 		tagRepository.deleteById(id);
 
 	}
+
 }

@@ -3,20 +3,20 @@
 <head th:replace="_fragments :: head(~{::title})">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>blog</title>
+  <title>搜尋結果</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-  <link rel="stylesheet" href="../static/css/my.css" >
+  <link rel="stylesheet" href="../static/css/my.css">
 </head>
 <body>
 
   <!-- menu -->
-  <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+  <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
         <h2 class="ui teal header item">Blog</h2>
         <a href="#" class="m-item item m-mobile-hide"><i class="small home icon"></i>首頁</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="small idea icon"></i>分類</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="small tags icon"></i>標籤</a>
+        <a href="#" class="active m-item item m-mobile-hide"><i class="small tags icon"></i>標籤</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="small clone icon"></i>歸檔</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="small info icon"></i>關於我</a>
         <div class="right m-item item m-mobile-hide">
@@ -33,29 +33,22 @@
   </nav>
 
   <!--  內容  -->
-  <div class="m-container m-padded-td-large">
-    <!--  Container具有響應式功能，能根據不同平台自動給予適當的頁面  -->
+  <div class="m-container m-container-small m-padded-td-large">
     <div class="ui container">
-      <!-- stackable >> 使頁面元件可以因應頁面大小進行堆疊，若加上mobile reversed 可使堆疊方向反轉-->
-      <div class="ui stackable grid">
-
-        <!--  左邊列表  -->
-        <div class="eleven wide column">
-          <!--header-->
-          <div class="ui attached segment">
-            <div class="ui middle aligned two column grid">
-              <div class="column">
-                <h3 class="ui teal header">文章</h3>
-              </div>
-              <div class="right aligned column">
-                共 <h2 class="ui orange header m-inline-block" th:text="${page.totalElements}">14</h2> 篇
-              </div>
-            </div>
+      <!--header-->
+      <div class="ui attached segment">
+        <div class="ui middle aligned two column grid">
+          <div class="column">
+            <h3 class="ui teal header">搜尋結果</h3>
           </div>
-          <!--content-->
-          <div class="ui attached segment">
+          <div class="right aligned column">
+            共 <h2 class="ui orange header m-inline-block">14</h2> 個
+          </div>
+        </div>
+      </div>
 
-            <div class="ui padded vertical segment m-padded-td-large" th:each="blog : ${page.content}">
+      <div class="ui top attached teal segment">
+         <div class="ui padded vertical segment m-padded-td-large" th:each="blog : ${page.content}">
               <div class="ui middle aligned mobile reversed stackable grid" >
                 <div class="eleven wide column">
                   <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">看看這隻黑色的小狗狗</a></h3>
@@ -91,77 +84,21 @@
                 </div>
               </div>
             </div>
-            
-          </div>
+     
+      </div>
 
-          <!--footer-->
-          <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
-            <div class="ui middle aligned two column grid">
-              <div class="column">
-                <a href="#" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}" class="ui mini teal basic button">上一頁</a>
-              </div>
-              <div class="right aligned column">
-                <a href="#" th:href="@{/(page=${page.number}+1)}" th:unless="${page.last}" class="ui mini teal basic button">下一頁</a>
-              </div>
-            </div>
+      <!--footer-->
+      <div class="ui bottom attached segment">
+        <div class="ui middle aligned two column grid">
+          <div class="column">
+            <a href="#" class="ui mini teal basic button">上一頁</a>
           </div>
-        </div>
-        
-
-        <!--  右邊的Top  -->
-        <div class="five wide column">
-          <!--  分類  -->
-          <div class="ui segments ">
-            <div class="ui secondary segment">
-              <div class="ui two column grid">
-                <div class="column">
-                  <i class="idea icon"></i>分類
-                </div>
-                <div class="right aligned column">
-                  <a href="#">more <i class="icon angle double right"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="ui teal segment">
-              <div class="ui fluid vertical menu">
-                <a href="#" class="item" th:each="type : ${types}">
-                  <span th:text="${type.name}">學習日誌</span>
-                  <div class="ui teal basic left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
-                </a>
-              </div>
-            </div>
+          <div class="right aligned column">
+            <a href="#" class="ui mini teal basic button">下一頁</a>
           </div>
-          <!--  標籤  -->
-          <div class="ui segments m-margin-top-large">
-            <div class="ui secondary segment">
-              <div class="ui two column grid">
-                <div class="column">
-                  <i class="tags icon"></i>標籤
-                </div>
-                <div class="right aligned column">
-                  <a href="#">more <i class="icon angle double right"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="ui teal segment">
-              <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny" th:each="tag : ${tags}">
-                <span th:text="${tag.name}">方法論</span>
-                <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
-              </a>
-            </div>
-          </div>
-          <!--  最新推薦  -->
-          <div class="ui segments m-margin-top-large">
-            <div class="ui secondary segment">
-              <i class="bookmark icon"></i>最新推薦
-            </div>
-            <div class="ui teal segment" th:each="blog : ${recommendBlogs}">
-              <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black m-text-thin" th:text=${blog.title}>用戶故事(User Story)</a>
-            </div>
-          </div>
-          <!-- QR code 略過 -->
         </div>
       </div>
+
     </div>
   </div>
 
@@ -169,14 +106,14 @@
   <br>
 
   <!--  底部  -->
-  <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-td-massive">
+  <footer class="ui inverted vertical segment m-padded-td-massive">
     <div class="ui center aligned container">
       <!--  grid會將寬度切成16格  -->
       <div class="ui inverted divided stackable grid">
         <div class="three wide column">
           <div class="ui inverted link list">
             <div class="item">
-              <img src="../static/images/smallYellow.jpg" th:src="@{/images/smallYellow.jpg}" alt="" style="width: 150px">
+              <img src="../static/images/smallYellow.jpg" alt="" style="width: 150px">
             </div>
           </div>
         </div>
@@ -205,16 +142,14 @@
 
   </footer>
 
-<!--/*/<th:block th:replace="_fragments :: script">/*/-->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-<!--/*/</th:block>/*/-->
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+          integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
   <script>
-    $('.menu.toggle').click(function(){
-      $('.m-item').toggleClass('m-mobile-hide');
-    });
+      $('.menu.toggle').click(function () {
+          $('.m-item').toggleClass('m-mobile-hide');
+      });
   </script>
 
 </body>
