@@ -19,37 +19,37 @@ body{
     padding-bottom: 0.2em !important;
 }
 
-.m-padded-td-tiny {
+.m-padded-tb-tiny {
     padding-top: 0.3em !important;
     padding-bottom: 0.3em !important;
 }
 
-.m-padded-td-small {
+.m-padded-tb-small {
     padding-top: 0.5em !important;
     padding-bottom: 0.5em !important;
 }
 
-.m-padded-td {
+.m-padded-tb {
     padding-top: 1em !important;
     padding-bottom: 1em !important;
 }
 
-.m-padded-td-large {
+.m-padded-tb-large {
     padding-top: 2em !important;
     padding-bottom: 2em !important;
 }
 
-.m-padded-td-big {
+.m-padded-tb-big {
     padding-top: 3em !important;
     padding-bottom: 3em !important;
 }
 
-.m-padded-td-huge {
+.m-padded-tb-huge {
     padding-top: 4em !important;
     padding-bottom: 4em !important;
 }
 
-.m-padded-td-massive {
+.m-padded-tb-massive {
     padding-top: 5em !important;
     padding-bottom: 5em !important;
 }

@@ -10,13 +10,13 @@
 <body>
 
   <!-- menu -->
-  <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+  <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
         <h2 class="ui teal header item">Blog</h2>
         <a href="#" class="m-item item m-mobile-hide"><i class="small home icon"></i>首頁</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="small idea icon"></i>分類</a>
-        <a href="#" class="active m-item item m-mobile-hide"><i class="small tags icon"></i>標籤</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="small tags icon"></i>標籤</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="small clone icon"></i>歸檔</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="small info icon"></i>關於我</a>
         <div class="right m-item item m-mobile-hide">
@@ -33,7 +33,7 @@
   </nav>
 
   <!--  內容  -->
-  <div class="m-container m-container-small m-padded-td-large">
+  <div class="m-container m-container-small m-padded-tb-large">
     <div class="ui container">
       <!--header-->
       <div class="ui attached segment">
@@ -42,13 +42,13 @@
             <h3 class="ui teal header">搜尋結果</h3>
           </div>
           <div class="right aligned column">
-            共 <h2 class="ui orange header m-inline-block">14</h2> 個
+            共 <h2 class="ui orange header m-inline-block" th:text="${page.totalElements}" >14</h2> 篇
           </div>
         </div>
       </div>
 
       <div class="ui top attached teal segment">
-         <div class="ui padded vertical segment m-padded-td-large" th:each="blog : ${page.content}">
+         <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
               <div class="ui middle aligned mobile reversed stackable grid" >
                 <div class="eleven wide column">
                   <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">看看這隻黑色的小狗狗</a></h3>
@@ -88,13 +88,13 @@
       </div>
 
       <!--footer-->
-      <div class="ui bottom attached segment">
+      <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
         <div class="ui middle aligned two column grid">
           <div class="column">
-            <a href="#" class="ui mini teal basic button">上一頁</a>
+            <a href="#" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}" class="ui mini teal basic button">上一頁</a>
           </div>
           <div class="right aligned column">
-            <a href="#" class="ui mini teal basic button">下一頁</a>
+            <a href="#" th:href="@{/(page=${page.number}+1)}" th:unless="${page.last}" class="ui mini teal basic button">下一頁</a>
           </div>
         </div>
       </div>
@@ -106,7 +106,7 @@
   <br>
 
   <!--  底部  -->
-  <footer class="ui inverted vertical segment m-padded-td-massive">
+  <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
     <div class="ui center aligned container">
       <!--  grid會將寬度切成16格  -->
       <div class="ui inverted divided stackable grid">

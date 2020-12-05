@@ -24,10 +24,12 @@
             <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="small clone icon"></i>歸檔</a>
             <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="small info icon"></i>關於我</a>
             <div class="right m-item item m-mobile-hide">
-                <div class="ui icon inverted transparent input">
-                    <input type="text" placeholder="Search ...">
-                    <i class="search link icon"></i>
-                </div>
+            	<form name="search" action="#" th:action="@{/search}" target="_blank">
+	                <div class="ui icon inverted transparent input">
+	                    <input type="text" name="query" placeholder="Search ..." th:value="${query}">
+	                    <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+	                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -37,7 +39,7 @@
 </nav>
 
 <!--  底部  -->
-<footer th:fragment="footer" class="ui inverted vertical segment m-padded-td-massive">
+<footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
     <div class="ui center aligned container">
         <!--  grid會將寬度切成16格  -->
         <div class="ui inverted divided stackable grid">
