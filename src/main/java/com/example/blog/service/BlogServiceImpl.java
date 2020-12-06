@@ -116,6 +116,8 @@ public class BlogServiceImpl implements BlogService {
 		Blog tempBlog = new Blog();
 		BeanUtils.copyProperties(blog, tempBlog);
 		tempBlog.setContent(MarkdownUtils.markdownToHtmlExtensions(blog.getContent()));
+		tempBlog.setViews(tempBlog.getViews() + 1);
+		blogRepository.updateViews(id);
 		return tempBlog;
 	}
 }
