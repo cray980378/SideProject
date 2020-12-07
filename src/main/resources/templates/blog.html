@@ -63,6 +63,7 @@
         <!-- 內容 -->
         <div class="ui right aligned basic segment">
           <div class="ui orange basic label" th:text="${blog.flag}" >原創</div>
+          <a href="#" target="_blank" class="ui teal label" th:href="@{/types/{id}(id=${blog.type.id})}" th:text="${blog.type.name}">知識</a>          
         </div>
         <h2 class="ui center aligned header" th:text="${blog.title}" >看看這隻黑色的小狗狗</h2>
         <br>
