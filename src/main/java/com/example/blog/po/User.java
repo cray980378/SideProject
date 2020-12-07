@@ -120,9 +120,4 @@ public class User {
 		this.blogs = blogs;
 	}
 
-	@Override
-	public String toString() {
-		return "" + this.getClass().getSimpleName() + new Gson().toJson(this);
-	}
-
 }

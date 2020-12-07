@@ -63,7 +63,7 @@
         <!-- 內容 -->
         <div class="ui right aligned basic segment">
           <div class="ui orange basic label" th:text="${blog.flag}" >原創</div>
-          <a href="#" target="_blank" class="ui teal label" th:href="@{/types/{id}(id=${blog.type.id})}" th:text="${blog.type.name}">知識</a>          
+          <a href="#" class="ui teal label" th:href="@{/types/{id}(id=${blog.type.id})}" th:text="${blog.type.name}">知識</a>          
         </div>
         <h2 class="ui center aligned header" th:text="${blog.title}" >看看這隻黑色的小狗狗</h2>
         <br>
@@ -72,7 +72,7 @@
 
         <!-- 標籤 -->
         <div class="m-padded-lr-responsive">
-          <div class="ui teal basic left pointing left label" th:each="tag : ${blog.tags}" th:text="${tag.name}" >方法論</div>
+        	<a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui basic teal left pointing label m-paded-mini m-text-thin" th:each="tag : ${blog.tags}" th:text="${tag.name}">方法論</a>
         </div>
 
       </div>
@@ -82,7 +82,7 @@
           <div class="eleven wide column">
             <ui class="list">
               <li>版主：
-              	<a href="#" th:href="@{/about}" target="_blank" >
+              	<a href="#" th:href="@{/about}" >
                	  <span th:text="${blog.user.nickname}">Eason</span> 
                	</a>
               </li>

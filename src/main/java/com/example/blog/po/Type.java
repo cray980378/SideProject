@@ -53,9 +53,4 @@ public class Type {
 		this.blogs = blogs;
 	}
 
-	@Override
-	public String toString() {
-		return "" + this.getClass().getSimpleName() + new Gson().toJson(this);
-	}
-
 }

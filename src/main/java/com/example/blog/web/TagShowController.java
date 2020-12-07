@@ -14,42 +14,39 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.blog.po.Blog;
-import com.example.blog.po.Type;
+import com.example.blog.po.Tag;
 import com.example.blog.service.BlogService;
-import com.example.blog.service.TypeService;
-import com.example.blog.vo.BlogQuery;
+import com.example.blog.service.TagService;
 
 @Controller
-public class TypeShowController {
+public class TagShowController {
 
 	@Autowired
-	private TypeService typeService;
+	private TagService tagService;
 	@Autowired
 	private BlogService blogService;
 
-	@GetMapping("/types/{id}")
-	public String types(
+	@GetMapping("/tags/{id}")
+	public String tags(
 			@PageableDefault(size = 8, sort = { "updateTime" }, direction = Sort.Direction.DESC) Pageable pageable,
 			@PathVariable Long id, Model model) {
-		List<Type> types = typeService.listTypeTop(1000);
+		List<Tag> tags = tagService.listTagTop(1000);
 
-		if (!types.isEmpty()) {
+		if (!tags.isEmpty()) {
 
 			if (id == -1) {
-				id = types.get(0).getId();
+				id = tags.get(0).getId();
 			}
 
-			BlogQuery blogQuery = new BlogQuery();
-			blogQuery.setTypeId(id);
-			model.addAttribute("types", types);
-			model.addAttribute("page", blogService.listBlog(pageable, blogQuery));
-			model.addAttribute("activeTypeId", id);
+			model.addAttribute("tags", tags);
+			model.addAttribute("page", blogService.listBlog(id, pageable));
+			model.addAttribute("activeTagId", id);
 		} else {
-			model.addAttribute("types", types);
+			model.addAttribute("tags", tags);
 			model.addAttribute("page", new PageImpl<Blog>(new ArrayList<Blog>()));
-			model.addAttribute("activeTypeId", -1);
+			model.addAttribute("activeTagId", -1);
 		}
 
-		return "types";
+		return "tags";
 	}
 }

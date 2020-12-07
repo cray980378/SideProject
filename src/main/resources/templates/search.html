@@ -51,7 +51,7 @@
          <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
               <div class="ui middle aligned mobile reversed stackable grid" >
                 <div class="eleven wide column">
-                  <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">看看這隻黑色的小狗狗</a></h3>
+                  <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" class="m-black" th:text="${blog.title}">看看這隻黑色的小狗狗</a></h3>
                   <p class="m-text" th:text="|${blog.description}.....|">
                     這隻黑色的小狗狗，眼睛水汪汪的很可愛呢.....這隻黑色的小狗狗，眼睛水汪汪的很可愛呢.....這隻黑色的小狗狗，眼睛水汪汪的很可愛呢.....這隻黑色的小狗狗，眼睛水汪汪的很可愛呢....</p>
                   <div class="ui grid">
@@ -73,12 +73,12 @@
                     </div>
 
                     <div class="right aligned five wide column">
-                      <a href="#" target="_blank" class="ui teal label m-padded-tiny" th:href="@{/types/{id}(id=${blog.type.id})}" th:text="${blog.type.name}">知識</a>
+                      <a href="#" class="ui teal label m-padded-tiny" th:href="@{/types/{id}(id=${blog.type.id})}" th:text="${blog.type.name}">知識</a>
                     </div>
                   </div>
                 </div>
                 <div class="five wide column">
-                  <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                  <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" >
                     <img src="https://picsum.photos/id/237/800/450.jpg" th:src="@{${blog.firstPicture}}" alt="" class="ui rounded image">
                   </a>
                 </div>
