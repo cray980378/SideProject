@@ -1,6 +1,7 @@
 package com.example.blog.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +24,8 @@ public interface BlogService {
 	Page<Blog> listBlog(String query, Pageable pageable);
 
 	List<Blog> listRecommendBlogTop(Integer size);
+	
+	Map<String, List<Blog>> archiveBlog();
 	
 	Blog saveBlog(Blog blog);
 

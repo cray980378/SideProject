@@ -21,8 +21,8 @@
             <a href="#" th:href="@{/}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="small home icon"></i>首頁</a>
             <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="small idea icon"></i>分類</a>
             <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="small tags icon"></i>標籤</a>
-            <a href="#" th:href="@{/archives/-1}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="small clone icon"></i>歸檔</a>
-            <a href="#" th:href="@{/about/-1}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="small info icon"></i>關於我</a>
+            <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="small clone icon"></i>歸檔</a>
+<!--             <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="small info icon"></i>關於我</a>-->
             <div class="right m-item item m-mobile-hide">
             	<form name="search" action="#" th:action="@{/search}" >
 	                <div class="ui icon inverted transparent input">
@@ -43,30 +43,30 @@
     <div class="ui center aligned container">
         <!--  grid會將寬度切成16格  -->
         <div class="ui inverted divided stackable grid">
-            <div class="three wide column">
+            <div class="four wide column">
                 <div class="ui inverted link list">
                     <div class="item">
-                        <img src="../static/images/smallYellow.jpg" th:src="@{/images/smallYellow.jpg}" alt="" style="width: 150px">
+                        <img src="../static/images/smallYellow.jpg" th:src="@{/images/github.png}" alt="" style="width: 150px">
                     </div>
                 </div>
             </div>
-            <div class="three wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">最新博客</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">用戶故事</a>
-                    <a href="#" class="item">用戶故事</a>
-                    <a href="#" class="item">用戶故事</a>
+            <div class="four wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">最新文章</h4>
+                <div id="newblog-container">
+	                <div class="ui inverted link list" th:fragment="newblogList">
+	                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" class="item" th:each="blog : ${newblogs}" th:text="${blog.title}" >用戶故事</a>
+	                </div>
                 </div>
             </div>
-            <div class="three wide column">
+            <div class="four wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">聯繫我</h4>
                 <div class="ui inverted link list">
-                    <a href="#" class="item">Email : cody22004@gmail.com</a>
+                    <a href="#" class="item" th:text="|Email : #{index.email}|">Email : </a>
                 </div>
             </div>
-            <div class="seven wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">Blog</h4>
-                <p class="m-text-thin m-text-spaced m-opacity-tiny">這是一個為了學習而設計的簡易Blog</p>
+            <div class="four wide column">                
+            	<h4 class="ui inverted header m-text-thin m-text-spaced m-opacity-mini">簡介</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-tiny">這是一個簡單的個人部落格</p>
             </div>
         </div>
         <div class="ui inverted section divider"></div>
@@ -83,6 +83,9 @@
     <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
     <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
     <script src="../static/lib/waypoints/jquery.waypoints.min.js" th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+    <script>
+    	$('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+    </script>
 </th:block>
 
 </body>

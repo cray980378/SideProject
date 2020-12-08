@@ -13,8 +13,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.google.gson.Gson;
-
 @Entity
 @Table(name = "t_comment")
 public class Comment {

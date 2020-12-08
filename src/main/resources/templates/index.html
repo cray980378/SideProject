@@ -118,13 +118,13 @@
                   <i class="idea icon"></i>分類
                 </div>
                 <div class="right aligned column">
-                  <a href="#">more <i class="icon angle double right"></i></a>
+                  <a href="#" th:href="@{/types/-1}" >more <i class="icon angle double right"></i></a>
                 </div>
               </div>
             </div>
             <div class="ui teal segment">
               <div class="ui fluid vertical menu">
-                <a href="#" class="item" th:each="type : ${types}">
+                <a href="#" th:href="@{/types/{id}(id=${type.id})}" class="item" th:each="type : ${types}">
                   <span th:text="${type.name}">學習日誌</span>
                   <div class="ui teal basic left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
                 </a>
@@ -139,12 +139,12 @@
                   <i class="tags icon"></i>標籤
                 </div>
                 <div class="right aligned column">
-                  <a href="#">more <i class="icon angle double right"></i></a>
+                  <a href="#" th:href="@{/tags/-1}">more <i class="icon angle double right"></i></a>
                 </div>
               </div>
             </div>
             <div class="ui teal segment">
-              <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny" th:each="tag : ${tags}">
+              <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui teal basic left pointing label m-margin-tb-tiny" th:each="tag : ${tags}">
                 <span th:text="${tag.name}">方法論</span>
                 <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
               </a>

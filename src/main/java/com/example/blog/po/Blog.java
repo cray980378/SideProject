@@ -19,7 +19,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import com.google.gson.Gson;
 
 @Entity
 @Table(name = "t_blog")

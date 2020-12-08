@@ -10,7 +10,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import com.google.gson.Gson;
 
 @Entity
 @Table(name = "t_tag")

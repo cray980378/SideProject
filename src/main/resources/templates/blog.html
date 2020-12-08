@@ -76,7 +76,7 @@
         </div>
 
       </div>
-      <div class="ui attached positive message">
+      <div class="ui attached positive message" th:if="${blog.shareStatement}">
         <!-- 部落客訊息 -->
         <div class="ui grid">
           <div class="eleven wide column">
@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="ui bottom attached segment">
+      <div class="ui bottom attached segment" th:if="${blog.commentabled}">
         <!-- 留言區域 -->
         <div id="comment-container" class="ui teal segment">
           <div th:fragment="commentList">
@@ -175,7 +175,7 @@
     <div class="ui vertical icon buttons">
       <button type="button" class="ui toc teal button">目錄</button>
       <a href="#comment-container" class="ui teal button">留言</a>
-      <button class="ui qrcode teal button"><i class="qrcode big icon"></i></button>
+      <!-- <button class="ui qrcode teal button"><i class="qrcode big icon"></i></button> -->
       <div id="toTop-button" class="ui teal button"><i class="chevron up icon"></i></div>
     </div>
   </div>
