@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/Blog?useUnicode=true&characterEncoding=utf-8
+    username: admin
+    password: admin
+    
+server:
+  port: 8080
+  
+default-data:
+  nickname: DefaultUser
+  username: admin
+  password: admin
+  email: default_user@email.com
+  avatar-url: https://picsum.photos/id/237/100/100.jpg 
+
+

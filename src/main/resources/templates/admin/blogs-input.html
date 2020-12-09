@@ -79,7 +79,7 @@
             <div class="ui left labeled action input">
               <label class="ui compact teal basic label">分類</label>
               <div class="ui fluid selection dropdown">
-                <input type="hidden" name="typeId" th:value="*{type} != null ? *{type.id}">
+                <input type="hidden" name="type.id" th:value="*{type} != null ? *{type.id}">
                 <i class="dropdown icon"></i>
                 <div class="default text">分類</div>
                 <div class="menu">
@@ -245,7 +245,7 @@
                   }]
               },
               typeId: {
-                  identifier: 'typeId',
+                  identifier: 'type.id',
                   rules: [{
                       type: 'empty',
                       prompt: '請選擇文章分類'
